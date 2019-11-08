@@ -24,16 +24,16 @@ div {
   padding: 5px; }
 
 .snakeBody {
-  background: url("../snakeGameJS/img/body.png");
+  background: url("..//snakeGameJS/img/body.png");
   background-size: cover;
   border-radius: 50%; }
 
 .head {
-  background: url("../snakeGameJS/img/head.png");
+  background: url("..//snakeGameJS/img/head.png");
   background-size: cover;
   border-radius: 10%; }
 
 .fruit {
-  background: url("../snakeGameJS/img/fruit.png");
+  background: url("..//snakeGameJS/img/fruit.png");
   background-size: cover;
   border-radius: 10%; }
