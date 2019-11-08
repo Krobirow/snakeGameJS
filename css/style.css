@@ -27,7 +27,7 @@ div {
   width: 40px;
   height: 40px;
   padding: 5px;
-  background: url('../snakeGameJS/img/body.png');
+  background: url('../img/body.png');
   background-size: cover;
   border-radius: 50%; }
 
@@ -35,7 +35,7 @@ div {
   width: 40px;
   height: 40px;
   padding: 5px;
-  background: url('../snakeGameJS/img/head.png');
+  background: url('../img/head.png');
   background-size: cover;
   border-radius: 10%; }
 
@@ -43,6 +43,6 @@ div {
   width: 40px;
   height: 40px;
   padding: 5px;
-  background: url('../snakeGameJS/img/fruit.png');
+  background: url('../img/fruit.png');
   background-size: cover;
   border-radius: 10%; }
