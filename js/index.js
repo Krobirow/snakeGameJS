@@ -125,7 +125,7 @@ function move() {
         }, 200); 
         
         clearInterval(interval);
-        snakeBody[0].style.background = "url('..//snakeGameJS/img/head-death.png') center no-repeat";
+        snakeBody[0].style.background = "url('../snakeGameJS/img/head-death.png') center no-repeat";
         snakeBody[0].style.backgroundSize = "cover";
     }
 
