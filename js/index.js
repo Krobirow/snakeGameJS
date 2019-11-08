@@ -136,15 +136,17 @@ function move() {
     steps = true;
 }
 
-let interval = setInterval(move, 300);
+let interval = setInterval(move, 200);
 
-if (score >= 5) {
-    interval = setInterval(move, 200);
-} else if (score >= 10) {
-    interval = setInterval(move, 100);
-} else if (score >= 20) {
-    interval = setInterval(move, 50);
-}
+// if (score >= 1) {
+//     interval = setInterval(move, 50);
+// } else if (score >= 10) {
+//     interval = setInterval(move, 100);
+// } else if (score >= 20) {
+//     interval = setInterval(move, 50);
+// }
+
+// console.log(interval);
 
 window.addEventListener('keydown', function(e){
     if (steps == true) {
