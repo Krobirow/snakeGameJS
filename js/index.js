@@ -125,8 +125,15 @@ function move() {
         }, 200); 
         
         clearInterval(interval);
-        snakeBody[0].style.background = "url('../snakeGameJS/img/head-death.png') center no-repeat";
-        snakeBody[0].style.backgroundSize = "cover";
+        // snakeBody[0].style.background = "url('../snakeGameJS/img/head-death.png') center no-repeat";
+        // snakeBody[0].style.backgroundSize = "cover";
+        snakeBody[0].style.cssText = `
+                            background: url('../snakeGameJS/img/head-death.png') center no-repeat;
+                            background-size: cover;
+                            width: 40px;
+                            height: 40px;
+                            padding: 5px
+                        `;
     }
 
     snakeBody[0].classList.add('head');
