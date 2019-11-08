@@ -46,3 +46,11 @@ div {
   background: url('../img/fruit.png');
   background-size: cover;
   border-radius: 10%; }
+
+  .head-death {
+    background: url('../img/head-death.png') center no-repeat;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    padding: 5px
+  }

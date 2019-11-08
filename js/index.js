@@ -125,15 +125,7 @@ function move() {
         }, 200); 
         
         clearInterval(interval);
-        // snakeBody[0].style.background = "url('../snakeGameJS/img/head-death.png') center no-repeat";
-        // snakeBody[0].style.backgroundSize = "cover";
-        snakeBody[0].style.cssText = `
-                            background: url('../img/head-death.png') center no-repeat;
-                            background-size: cover;
-                            width: 40px;
-                            height: 40px;
-                            padding: 5px
-                        `;
+        snakeBody[0].classList.add('head-death');
     }
 
     snakeBody[0].classList.add('head');
@@ -145,6 +137,14 @@ function move() {
 }
 
 let interval = setInterval(move, 300);
+
+if (score >= 5) {
+    interval = setInterval(move, 200);
+} else if (score >= 10) {
+    interval = setInterval(move, 100);
+} else if (score >= 20) {
+    interval = setInterval(move, 50);
+}
 
 window.addEventListener('keydown', function(e){
     if (steps == true) {
