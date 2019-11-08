@@ -24,16 +24,16 @@ div {
   padding: 5px; }
 
 .snakeBody {
-  background: url("/img/body.png");
+  background: url("..//img/body.png");
   background-size: cover;
   border-radius: 50%; }
 
 .head {
-  background: url("/img/head.png");
+  background: url("..//img/head.png");
   background-size: cover;
   border-radius: 10%; }
 
 .fruit {
-  background: url("/img/fruit.png");
+  background: url("..//img/fruit.png");
   background-size: cover;
   border-radius: 10%; }
