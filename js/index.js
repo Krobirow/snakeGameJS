@@ -1,3 +1,21 @@
+wv.requestFocus(View.FOCUS_DOWN);
+    wv.setOnTouchListener(new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+            case MotionEvent.ACTION_UP:
+                if (!v.hasFocus()) {
+                    v.requestFocus();
+                }
+                break;
+            }
+            return false;
+        }
+    });
+
+
+
 let field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
