@@ -2,15 +2,16 @@
   box-sizing: border-box; }
 
 body {
+  display: block;
   margin: 20px;
+  background-color: none;
   overflow-x: hidden;
-  overflow-y: hidden; }
-
-div {
-  padding: 0;
-  margin: 0; }
+}
 
 .field {
+  position: absolute;
+  top: 30px;
+  left: 300px;
   display: flex;
   flex-wrap: wrap;
   width: 800px;
@@ -53,4 +54,97 @@ div {
   width: 40px;
   height: 40px;
   padding: 5px
+}
+
+.btnL {
+  visibility: hidden;
+  position: absolute;
+  top: 250px;
+  left: 0;
+  background-color: rgba(245, 202, 202, 0);
+  color: rgb(156, 177, 173);
+  font-size: 22px;
+  width: 200px;
+  height: 200px;
+  border: 1px dotted gray;
+}
+
+.btnR {
+  visibility: hidden;
+  position: absolute;
+  top: 250px;
+  right: 0;
+  background-color: rgba(245, 202, 202, 0);
+  color: rgb(156, 177, 173);
+  font-size: 22px;
+  width: 200px;
+  height: 200px;
+  border: 1px dotted gray;
+}
+
+.btnU {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 300px;
+  background-color: rgba(245, 202, 202, 0);
+  color: rgb(156, 177, 173);
+  font-size: 22px;
+  width: 200px;
+  height: 200px;
+  border: 1px dotted gray;
+}
+.btnD {
+  visibility: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 300px;
+  background-color: rgba(245, 202, 202, 0);
+  color: rgb(156, 177, 173);
+  font-size: 22px;
+  width: 200px;
+  height: 200px;
+  border: 1px dotted gray;
+}
+
+.instruction {
+  font-size: 16px;
+  color: blue;
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 200px;
+  height: 150px;
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    background-color: honeydew;
+  }
+
+  .field {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
+  .instruction {
+    position: relative;
+    left: 0;
+  }
+  
+  .btnL {
+    visibility: visible;
+  }
+  .btnR {
+    visibility: visible;
+  }
+  .btnU {
+    visibility: visible;
+  }
+  .btnD {
+    visibility: visible;
+  }
 }

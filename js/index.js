@@ -1,15 +1,26 @@
-// $(document).ready(function() {
-//     $('.field').click(function(e){
-//         $(this).focus();
-//     });
-//     $('.button').click(function(e) {
-//         $('.field').trigger('click');
-//     });
-// });
+
+const keyA = document.createElement('button'),
+    keyW = document.createElement('button'),
+    keyD = document.createElement('button'),
+    keyS = document.createElement('button');
+
+keyA.classList.add('btnL');
+keyW.classList.add('btnU');
+keyD.classList.add('btnR');
+keyS.classList.add('btnD');
+
+keyA.innerText = "left";
+keyW.innerText = "up";
+keyD.innerText = "right";
+keyS.innerText = "down";
 
 let field = document.createElement('div');
 document.body.appendChild(field);
 field.classList.add('field');
+field.appendChild(keyA);
+field.appendChild(keyW);
+field.appendChild(keyD);
+field.appendChild(keyS);
 
 for (let i = 1; i < 401; i++) {
     let excel = document.createElement('div');
@@ -75,24 +86,29 @@ let steps = false;
 
 let instruction = document.createElement('p');
 document.body.appendChild(instruction);
-instruction.style.cssText = `
-    font-size: 26px;
-    color: blue;
-    position: absolute;
-    left: 30px;
-    top: 30px
-`;
+instruction.classList.add('instruction');
 instruction.innerHTML = ' <br> For new game - refresh page! <br> You can control snake by this keys:<br> W - Up <br> A - Left <br> D - Right <br> S - Down';
 
 let input = document.createElement('input');
 document.body.appendChild(input);
+
+
 input.readOnly = true;
 input.style.cssText = `
+    position: relative;
     margin: auto;
-    margin-top: 40px;
     font-size: 30px;
-    display: block
+    display: flex
 `;
+
+input.style.top = field.offsetHeight + 10 + 'px';
+
+
+// if (document.body.style.width = '900px') {
+//     input.style.top = field.offsetHeight - 980 + 'px';
+// } else if (document.body.style.width >= '901px') {
+//     input.style.top = field.offsetHeight + 10 + 'px';
+// }
 
 let score = 0;
 let intervalId = 0;
@@ -191,6 +207,42 @@ window.addEventListener('keydown', function(e){
             steps = false;
         }
         if (e.keyCode == 83 && direction != 'up') {
+            direction = 'down';
+            steps = false;
+        }
+    }
+});
+
+keyA.addEventListener('click', function(e){
+    if (steps == true) {
+        if (keyA && direction != 'right') {
+            direction = 'left';
+            steps = false;
+        }
+    }
+});
+
+keyW.addEventListener('click', function(e){
+    if (steps == true) {
+        if (keyW && direction != 'down') {
+            direction = 'up';
+            steps = false;
+        }
+    }
+});
+
+keyD.addEventListener('click', function(e){
+    if (steps == true) {
+        if (keyD && direction != 'left') {
+            direction = 'right';
+            steps = false;
+        }
+    }
+});
+
+keyS.addEventListener('click', function(e){
+    if (steps == true) {
+        if (keyS && direction != 'up') {
             direction = 'down';
             steps = false;
         }
