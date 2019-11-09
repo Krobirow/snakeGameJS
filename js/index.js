@@ -59,14 +59,25 @@ function createFruit() {
 
     fruit.classList.add('fruit');
 }
-
 createFruit();
 
 let direction = 'right';
 let steps = false;
 
+let instruction = document.createElement('p');
+document.body.appendChild(instruction);
+instruction.style.cssText = `
+    font-size: 26px;
+    color: blue;
+    position: absolute;
+    left: 30px;
+    top: 30px
+`;
+instruction.innerHTML = ' <br> For new game - refresh page! <br> You can control snake by this keys:<br> W - Up <br> A - Left <br> D - Right <br> S - Down';
+
 let input = document.createElement('input');
 document.body.appendChild(input);
+input.readOnly = true;
 input.style.cssText = `
     margin: auto;
     margin-top: 40px;
@@ -75,6 +86,8 @@ input.style.cssText = `
 `;
 
 let score = 0;
+let intervalId = 0;
+let interval = 400;
 input.value = `Your score: ${score}`;
 
 function move() {
@@ -116,15 +129,31 @@ function move() {
         snakeBody.push(document.querySelector('[posX = "' + a + '"][posY = "' + b + '"]'));
         createFruit();
         score++;
+        
+        if (score >= 3 && score <= 5) {
+            interval = 300;
+        } else if (score >= 6 && score <= 15) { 
+            interval = 200;
+        } else if (score >= 16 && score <= 35) { 
+            interval = 100;
+        } else if (score >= 36) { 
+            interval = 50;
+        }
+
+        clearInterval(intervalId);
+        intervalId = setInterval(move, interval);
         input.value = `Your score: ${score}`;
     }
 
+    console.log(interval);
     if ( snakeBody[0].classList.contains('snakeBody')) {
+        
         setTimeout(() => {
             alert(`Game Over! Your score: ${score}`);
-        }, 200); 
+        }, 50);
         
         clearInterval(interval);
+        clearInterval(intervalId);
         snakeBody[0].classList.add('head-death');
     }
 
@@ -132,37 +161,27 @@ function move() {
     for (let i = 0; i < snakeBody.length; i++) {
         snakeBody[i].classList.add('snakeBody');
     }
-
     steps = true;
 }
 
-let interval = setInterval(move, 200);
-
-// if (score >= 1) {
-//     interval = setInterval(move, 50);
-// } else if (score >= 10) {
-//     interval = setInterval(move, 100);
-// } else if (score >= 20) {
-//     interval = setInterval(move, 50);
-// }
-
-// console.log(interval);
+intervalId = setInterval(move, interval);
+clearInterval(interval);
 
 window.addEventListener('keydown', function(e){
     if (steps == true) {
-        if (e.keyCode == 37 && direction != 'right') {
+        if (e.keyCode == 65 && direction != 'right') {
             direction = 'left';
             steps = false;
         }
-        if (e.keyCode == 38 && direction != 'down') {
+        if (e.keyCode == 87 && direction != 'down') {
             direction = 'up';
             steps = false;
         }
-        if (e.keyCode == 39 && direction != 'left') {
+        if (e.keyCode == 68 && direction != 'left') {
             direction = 'right';
             steps = false;
         }
-        if (e.keyCode == 40 && direction != 'up') {
+        if (e.keyCode == 83 && direction != 'up') {
             direction = 'down';
             steps = false;
         }
