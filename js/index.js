@@ -8,7 +8,6 @@ keyA.classList.add('btnL');
 keyW.classList.add('btnU');
 keyD.classList.add('btnR');
 keyS.classList.add('btnD');
-
 keyA.innerText = "left";
 keyW.innerText = "up";
 keyD.innerText = "right";
@@ -27,11 +26,9 @@ for (let i = 1; i < 401; i++) {
     field.appendChild(excel);
     excel.classList.add('excel');
 }
-
 let excel = document.getElementsByClassName('excel');
 let x = 1,
     y = 20;
-
 for ( let i=0; i<excel.length; i++) {
     if (x>20) {
         x=1;
@@ -52,38 +49,31 @@ let coordinates = generateSnake();
 let snakeBody = [document.querySelector('[posX = "' + coordinates[0] + '"][posY = "' + coordinates[1] + '"]'),
                 document.querySelector('[posX = "' + (coordinates[0]-1) + '"][posY = "' + coordinates[1] + '"]'),
                 document.querySelector('[posX = "' + (coordinates[0]-2) + '"][posY = "' + coordinates[1] + '"]')];
-
 for (let i = 0; i<snakeBody.length; i++) {
     snakeBody[i].classList.add('snakeBody');
 }
-
 snakeBody[0].classList.add('head');
 
 let fruit;
-
 function createFruit() {
     function generateFruit() {
         let posX = Math.round(Math.random() * (20 - 1) + 1);
         let posY = Math.round(Math.random() * (20 - 1) + 1);
         return [posX, posY];
     }
-
     let fruitCoordinates = generateFruit();
     fruit = document.querySelector('[posX = "' + fruitCoordinates[0] + '"][posY = "' + fruitCoordinates[1] + '"]');
-
 
     while(fruit.classList.contains('snakeBody')) {
         let fruitCoordinates = generateFruit();
         fruit = document.querySelector('[posX = "' + fruitCoordinates[0] + '"][posY = "' + fruitCoordinates[1] + '"]');    
     }
-
     fruit.classList.add('fruit');
 }
 createFruit();
 
 let direction = 'right';
 let steps = false;
-
 let instruction = document.createElement('p');
 document.body.appendChild(instruction);
 instruction.classList.add('instruction');
@@ -91,8 +81,6 @@ instruction.innerHTML = ' <br> For new game - refresh page! <br> You can control
 
 let input = document.createElement('input');
 document.body.appendChild(input);
-
-
 input.readOnly = true;
 input.style.cssText = `
     position: relative;
@@ -100,15 +88,7 @@ input.style.cssText = `
     font-size: 30px;
     display: flex
 `;
-
 input.style.top = field.offsetHeight + 10 + 'px';
-
-
-// if (document.body.style.width = '900px') {
-//     input.style.top = field.offsetHeight - 980 + 'px';
-// } else if (document.body.style.width >= '901px') {
-//     input.style.top = field.offsetHeight + 10 + 'px';
-// }
 
 let score = 0;
 let intervalId = 0;
@@ -146,7 +126,6 @@ function move() {
             snakeBody.unshift(document.querySelector('[posX = "' + snakeCoordinates[0] + '"][posY = "20"]'));
         }
     }
-
     if (snakeBody[0].getAttribute('posX') == fruit.getAttribute('posX') && snakeBody[0].getAttribute('posY') == fruit.getAttribute('posY')) {
         fruit.classList.remove('fruit');
         let a = snakeBody[snakeBody.length - 1].getAttribute('posX');
@@ -164,31 +143,24 @@ function move() {
         } else if (score >= 36) { 
             interval = 50;
         }
-
         clearInterval(intervalId);
         intervalId = setInterval(move, interval);
         input.value = `Your score: ${score}`;
     }
-
-    console.log(interval);
     if ( snakeBody[0].classList.contains('snakeBody')) {
-        
         setTimeout(() => {
             alert(`Game Over! Your score: ${score}`);
         }, 50);
-        
         clearInterval(interval);
         clearInterval(intervalId);
         snakeBody[0].classList.add('head-death');
     }
-
     snakeBody[0].classList.add('head');
     for (let i = 0; i < snakeBody.length; i++) {
         snakeBody[i].classList.add('snakeBody');
     }
     steps = true;
 }
-
 intervalId = setInterval(move, interval);
 clearInterval(interval);
 
@@ -212,7 +184,6 @@ window.addEventListener('keydown', function(e){
         }
     }
 });
-
 keyA.addEventListener('click', function(e){
     if (steps == true) {
         if (keyA && direction != 'right') {
@@ -221,7 +192,6 @@ keyA.addEventListener('click', function(e){
         }
     }
 });
-
 keyW.addEventListener('click', function(e){
     if (steps == true) {
         if (keyW && direction != 'down') {
@@ -230,7 +200,6 @@ keyW.addEventListener('click', function(e){
         }
     }
 });
-
 keyD.addEventListener('click', function(e){
     if (steps == true) {
         if (keyD && direction != 'left') {
@@ -239,7 +208,6 @@ keyD.addEventListener('click', function(e){
         }
     }
 });
-
 keyS.addEventListener('click', function(e){
     if (steps == true) {
         if (keyS && direction != 'up') {
